@@ -76,13 +76,29 @@ const groups = [
   { id: 2, name_th: 'พนักงาน' },
 ]
 
-function sigin() {
+ async function sigin() {
   console.log('email:', email.value)
   console.log('password:', password.value)
   console.log('name:', name.value)
   console.log('department_id:', department_id.value)
   console.log('group_id:', group_id.value)
+
+  const payload = {
+    email: email.value ,
+    password: password.value ,
+    name: name.value ,
+    department_id: department_id.value ,
+    group_id: group_id.value ,
+  }
+
+  try{
+    const response = await axios.post('http://localhost:7000/api/auth/register' ,payload)
+  }
+  catch(error){
+    console.log(error)
+  }
 }
+
 
 
 </script>
